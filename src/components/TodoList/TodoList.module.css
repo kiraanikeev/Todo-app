@@ -1,7 +1,56 @@
+.list{
+
+    height: 40px;
+    margin: 0 auto;
+    width: 500px;
+    position: relative;
+}
+.visible{
+background-color: white;
+justify-content: space-between;
+align-items: center;
+display: flex;
+margin-bottom: 5px;
+height: 30px;
+width: 100%;
+position: relative;
+}
+.active{
+    margin: 10px;
+}
 .completed{
     text-decoration: line-through;
+    margin: 10px;
+    opacity: 0.5;
 }
 .unVisible{
     visibility: hidden;
-
 }
+.toggle{
+    background-image: url("../../image/галочка.jpg");
+    width: 19px;
+    height: 19px;
+    background-repeat: no-repeat;
+    background-size: 19px;
+    box-sizing: border-box;
+    border: none;
+    margin-right: 20px;
+}
+.delete{
+    background-image: url("../../image/урна.png");
+    width: 19px;
+    height: 19px;
+    background-repeat: no-repeat;
+    background-size: 19px;
+    box-sizing: border-box;
+    border: none;
+    margin-right: 10px;
+}
+.toggle:hover {
+    opacity: 0.6;
+    cursor: pointer;
+  }
+.delete:hover {
+    opacity: 0.6;
+    cursor: pointer;
+  }

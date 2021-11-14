@@ -11,6 +11,9 @@ const[ allVisible, setAllVisible] = useState(true)
 const[ visibleActive, setVisibleActive] = useState(false)
 const[ visibleCompleted, setVisibleCompleted] = useState(false)
 
+
+const[ todosActivel, setTodosActive] = useState([])
+const[ todosCompleted, setTodosCompleted] = useState([])
 function addTask (task){
   const newTask ={
     id: Math.random(),
@@ -45,37 +48,75 @@ useEffect(() => {
 }, []);
 
 function handleAllVisible(){
+
   setAllVisible(true)
   setVisibleActive(false)
   setVisibleCompleted(false)
 }
 function handleVisibleActive(){
+  console.log('handleActiveVisible')
+  setTodosActive(todos.filter((el)=>{
+    return !el.completed}))
   setVisibleActive(true)
   setAllVisible(false)
   setVisibleCompleted(false)
 }
 function handleVisibleCompleted(){
+  console.log('setTodosCompleted')
+  setTodosCompleted(todos.filter((el)=>{
+    return el.completed}))
   setVisibleCompleted(true)
   setAllVisible(false)
   setVisibleActive(false)
 }
+console.log('todosActivel', todosActivel)
+console.log('todosCompleted', todosCompleted)
+console.log('todos', todos)
+
   return (
-    <div className={styles.App}>
+    <div className={styles.main}>
 <TodoForm
 addTask={addTask} />
 <div>
-{todos.map((item)=>{
+
+{visibleCompleted
+? todosCompleted.map((item)=>{
   return( <TodoList key={item.id} id={item.id} task={item.task} 
   completed={item.completed}  saveLocalStorage={saveLocalStorage}
   handleDelete={handleDelete} handleToggle={handleToggle} 
   allVisible={allVisible} visibleActive={visibleActive}
-  visibleCompleted={visibleCompleted}/>)})}
+  visibleCompleted={visibleCompleted}/>)}) 
+:visibleActive
+? todosActivel.map((item)=>{
+  return( <TodoList key={item.id} id={item.id} task={item.task} 
+  completed={item.completed}  saveLocalStorage={saveLocalStorage}
+  handleDelete={handleDelete} handleToggle={handleToggle} 
+  allVisible={allVisible} visibleActive={visibleActive}
+  visibleCompleted={visibleCompleted}/>)})
+: todos.map((item)=>{
+  return( <TodoList key={item.id} id={item.id} task={item.task} 
+  completed={item.completed}  saveLocalStorage={saveLocalStorage}
+  handleDelete={handleDelete} handleToggle={handleToggle} 
+  allVisible={allVisible} visibleActive={visibleActive}
+  visibleCompleted={visibleCompleted}/>)})
+}
+
+
+
+
+
+{/* {todos.map((item)=>{
+  return( <TodoList key={item.id} id={item.id} task={item.task} 
+  completed={item.completed}  saveLocalStorage={saveLocalStorage}
+  handleDelete={handleDelete} handleToggle={handleToggle} 
+  allVisible={allVisible} visibleActive={visibleActive}
+  visibleCompleted={visibleCompleted}/>)})} */}
   </div>
-  <div>
+  <div className={styles.footer}>
   <p>Количество задач:  {todos.length}</p>
-  <button onClick={handleAllVisible}>All</button>
-  <button onClick={handleVisibleActive}>Active</button>
-  <button onClick={handleVisibleCompleted}>Completed</button>
+  <button className={styles.button} onClick={handleAllVisible}>All</button>
+  <button className={styles.button} onClick={handleVisibleActive}>Active</button>
+  <button className={styles.button} onClick={handleVisibleCompleted}>Completed</button>
   </div>
     </div>
   );

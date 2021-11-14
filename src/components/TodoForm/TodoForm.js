@@ -17,12 +17,12 @@ function handleChange(e){
 
 
     return (
-        <div className={styles.TodoForm}>
-            <h1 className={styles.TodoForm0}>TODO LIST</h1>
-            <form className={styles.TodoForm1} action="#" onSubmit={handleSubmit}>
-            <input className={styles.TodoForm2} type="text"placeholder="What do you need to do?"
+        <div className={styles.container}>
+            <h1 className={styles.name}>TODO LIST</h1>
+            <form className={styles.form} action="#" onSubmit={handleSubmit}>
+            <input className={styles.input} type="text"placeholder="What do you need to do?"
              required minLength={2} maxLength={40} onChange={handleChange} value={task}/>
-            <button className={styles.TodoForm3} type="submit">PUSH</button>
+            <button className={styles.button} type="submit"></button>
             </form>
      
         </div>
