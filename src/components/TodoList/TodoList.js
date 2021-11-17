@@ -3,44 +3,34 @@ import styles from './TodoList.module.css'
 
 function TodoList(props) {
 
-function deleteClick(){
-    props.handleDelete(props)
-}
-function toggleClick(){
-    props.handleToggle(props)
-}
-    props.saveLocalStorage()
+
+
+    function defaultValue(){
+
+        props.setTodoEditing(props.id)
+        props.setEditName(props.task)
+    }
+ 
     return (<div className={styles.list}>
         
-        {/* <div className={props.allVisible ? styles.visible : styles.unVisible}> */}
         <div className={styles.visible}>
-            <p className={!props.completed ? styles.active :styles.completed}>
-                {props.task}</p>
+      <div>
+           {props.id === props.todoEditing ? (
+               <input type='text' defaultValue={props.task} onChange={(e)=>{props.setEditName(e.target.value)}}/>
+           ) : ( <p className={!props.completed ? styles.active :styles.completed}>
+           {props.task}</p>)}
+           </div>
                 <div>
-            <button className={styles.toggle} onClick={toggleClick}></button>
-            <button className={styles.delete} onClick={deleteClick}></button>
+              <button className={styles.toggle} onClick={()=>props.handleToggle(props.id)}></button>
+            <button className={styles.delete} onClick={()=>props.handleDelete(props.id)}></button>
+            {props.id === props.todoEditing ? (
+               <button  onClick={()=> props.handleEdit(props.id)}>SUBMIT EDIT</button>
+           ) : (  <button  onClick={defaultValue}>EDIT</button>)}
+           
             </div>
+
+
         </div>
-       
-        {/* <div className={props.visibleActive ? styles.visible :styles.unVisible}>
-        <p className={props.completed ? styles.unVisible :styles.active}>
-            {props.task}</p>
-            <div>
-            <button className={styles.toggle} onClick={toggleClick}></button>
-            <button className={styles.delete} onClick={deleteClick}></button>
-            </div>
-    </div>
-       
-        <div className={props.visibleCompleted ? styles.visible :styles.unVisible}>
-        <p className={props.completed ? styles.completed : styles.unVisible}>
-            {props.task}</p>
-            <div>
-            <button className={styles.toggle} onClick={toggleClick}></button>
-            <button className={styles.delete} onClick={deleteClick}></button>
-            </div>
-    </div> */}
-
-
     </div>
     )
 }

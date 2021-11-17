@@ -4,16 +4,13 @@ import TodoList from '../TodoList/TodoList';
 import styles from './App.module.css'
 import React, { useEffect } from 'react';
 
+
 function App() {
 
 const[ todos, setTodos] = useState([])
-const[ allVisible, setAllVisible] = useState(true)
-const[ visibleActive, setVisibleActive] = useState(false)
-const[ visibleCompleted, setVisibleCompleted] = useState(false)
+const [editName, setEditName] = useState('')
+const [todoEditing, setTodoEditing] = useState(null);
 
-
-const[ todosActivel, setTodosActive] = useState([])
-const[ todosCompleted, setTodosCompleted] = useState([])
 function addTask (task){
   const newTask ={
     id: Math.random(),
@@ -22,56 +19,49 @@ function addTask (task){
   }
   setTodos([...todos, newTask])
 }
-function handleDelete(item){
-setTodos(todos.filter((element)=>element.id !== item.id))
+
+function handleDelete(id){
+setTodos(todos.filter((element)=>element.id !== id))
 }
-function handleToggle(item){
+
+function handleToggle(id){
 setTodos(todos.map((elem)=>{
-  if(elem.id === item.id){
+  if(elem.id === id){
     return{
       ...elem, completed: !elem.completed
     }
   }
   return elem;
 }))
-  
 }
-function saveLocalStorage(){
-    localStorage.setItem('todos', JSON.stringify(todos))
+
+function handleEdit(id){
+  setTodos(todos.map((elem)=>{
+    if(elem.id === id){
+      return{
+        ...elem, task: editName
+      }
+    }
+    return elem
+  }))
+  setTodoEditing(null)
 }
-useEffect(() => { 
-  if (localStorage.getItem('todos') === null){
-    console.log('NOL')
-  }else{
-    let todoLocal = JSON.parse(localStorage.getItem('todos'))
-      setTodos(todoLocal)}
+
+
+
+useEffect(() => {
+  const save = localStorage.getItem("todos");
+  const loadedTodos = JSON.parse(save);
+  if (loadedTodos) {
+    setTodos(loadedTodos);
+  }
 }, []);
 
-function handleAllVisible(){
+useEffect(() => {
+  const save = JSON.stringify(todos);
+  localStorage.setItem("todos", save);
+}, [todos]);
 
-  setAllVisible(true)
-  setVisibleActive(false)
-  setVisibleCompleted(false)
-}
-function handleVisibleActive(){
-  console.log('handleActiveVisible')
-  setTodosActive(todos.filter((el)=>{
-    return !el.completed}))
-  setVisibleActive(true)
-  setAllVisible(false)
-  setVisibleCompleted(false)
-}
-function handleVisibleCompleted(){
-  console.log('setTodosCompleted')
-  setTodosCompleted(todos.filter((el)=>{
-    return el.completed}))
-  setVisibleCompleted(true)
-  setAllVisible(false)
-  setVisibleActive(false)
-}
-console.log('todosActivel', todosActivel)
-console.log('todosCompleted', todosCompleted)
-console.log('todos', todos)
 
   return (
     <div className={styles.main}>
@@ -79,45 +69,19 @@ console.log('todos', todos)
 addTask={addTask} />
 <div>
 
-{visibleCompleted
-? todosCompleted.map((item)=>{
+{todos.map((item)=>{
   return( <TodoList key={item.id} id={item.id} task={item.task} 
-  completed={item.completed}  saveLocalStorage={saveLocalStorage}
+  completed={item.completed} 
   handleDelete={handleDelete} handleToggle={handleToggle} 
-  allVisible={allVisible} visibleActive={visibleActive}
-  visibleCompleted={visibleCompleted}/>)}) 
-:visibleActive
-? todosActivel.map((item)=>{
-  return( <TodoList key={item.id} id={item.id} task={item.task} 
-  completed={item.completed}  saveLocalStorage={saveLocalStorage}
-  handleDelete={handleDelete} handleToggle={handleToggle} 
-  allVisible={allVisible} visibleActive={visibleActive}
-  visibleCompleted={visibleCompleted}/>)})
-: todos.map((item)=>{
-  return( <TodoList key={item.id} id={item.id} task={item.task} 
-  completed={item.completed}  saveLocalStorage={saveLocalStorage}
-  handleDelete={handleDelete} handleToggle={handleToggle} 
-  allVisible={allVisible} visibleActive={visibleActive}
-  visibleCompleted={visibleCompleted}/>)})
-}
-
-
-
-
-
-{/* {todos.map((item)=>{
-  return( <TodoList key={item.id} id={item.id} task={item.task} 
-  completed={item.completed}  saveLocalStorage={saveLocalStorage}
-  handleDelete={handleDelete} handleToggle={handleToggle} 
-  allVisible={allVisible} visibleActive={visibleActive}
-  visibleCompleted={visibleCompleted}/>)})} */}
+  handleEdit={handleEdit} setTodoEditing={setTodoEditing}
+  todoEditing={todoEditing} setEditName={setEditName}
+  />)})}
   </div>
   <div className={styles.footer}>
   <p>Количество задач:  {todos.length}</p>
-  <button className={styles.button} onClick={handleAllVisible}>All</button>
-  <button className={styles.button} onClick={handleVisibleActive}>Active</button>
-  <button className={styles.button} onClick={handleVisibleCompleted}>Completed</button>
+
   </div>
+
     </div>
   );
 }
