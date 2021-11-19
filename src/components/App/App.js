@@ -67,7 +67,7 @@ useEffect(() => {
     <div className={styles.main}>
 <TodoForm
 addTask={addTask} />
-<div>
+
 
 {todos.map((item)=>{
   return( <TodoList key={item.id} id={item.id} task={item.task} 
@@ -76,9 +76,10 @@ addTask={addTask} />
   handleEdit={handleEdit} setTodoEditing={setTodoEditing}
   todoEditing={todoEditing} setEditName={setEditName}
   />)})}
-  </div>
+
+
   <div className={styles.footer}>
-  <p>Количество задач:  {todos.length}</p>
+  <p className={styles.text}>Количество задач:</p><p>{todos.length}</p>
 
   </div>
 

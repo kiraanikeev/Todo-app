@@ -1,56 +1,60 @@
 .list{
-
-    height: 40px;
-    margin: 0 auto;
-    width: 500px;
+margin-top: 5px;
+    display: flex;
+    flex-direction: row;
     position: relative;
 }
-.visible{
-background-color: white;
-justify-content: space-between;
-align-items: center;
-display: flex;
-margin-bottom: 5px;
-height: 30px;
-width: 100%;
-position: relative;
+.element{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    margin: 4px auto;
+    color: #fff;
+    background: linear-gradient(
+      90deg,
+      rgba(93, 12, 255, 1) 0%,
+      rgba(155, 0, 250, 1) 100%
+    );
+    padding: 15px;
+    border-radius: 5px;
+    width: 90%;
 }
 .active{
-    margin: 10px;
+    text-align: left;
+    margin-left: -150px;
 }
 .completed{
     text-decoration: line-through;
-    margin: 10px;
+    margin-left: 10px;
     opacity: 0.5;
+    margin-left: -150px;
 }
-.unVisible{
-    visibility: hidden;
-}
-.toggle{
-    background-image: url("../../image/галочка.jpg");
-    width: 19px;
-    height: 19px;
-    background-repeat: no-repeat;
-    background-size: 19px;
-    box-sizing: border-box;
-    border: none;
-    margin-right: 20px;
-}
-.delete{
-    background-image: url("../../image/урна.png");
-    width: 19px;
-    height: 19px;
-    background-repeat: no-repeat;
-    background-size: 19px;
-    box-sizing: border-box;
-    border: none;
-    margin-right: 10px;
-}
+.icons {
+    margin-left: 100px;
+    display: flex;
+    align-items: left;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .delete{
+    margin-right: 5px;
+    color: #fff;
+  }
+  
+  .edit{
+    color: #fff;
+  }
 .toggle:hover {
     opacity: 0.6;
     cursor: pointer;
   }
 .delete:hover {
+    opacity: 0.6;
+    cursor: pointer;
+  }
+  .edit:hover {
     opacity: 0.6;
     cursor: pointer;
   }

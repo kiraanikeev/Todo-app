@@ -18,7 +18,7 @@ function handleSubmit(e){
             <form className={styles.form} action="#" onSubmit={handleSubmit}>
             <input className={styles.input} type="text"placeholder="What do you need to do?"
              required minLength={2} maxLength={40} onChange={(e)=>setTask(e.target.value)} value={task}/>
-            <button className={styles.button} type="submit"></button>
+            <button className={styles.button} type="submit">Add Todo</button>
             </form>
      
         </div>

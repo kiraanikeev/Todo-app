@@ -1,38 +1,37 @@
 .name{
-    min-height: 20vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin: 32px 0;
+    color: #fff;
+    font-size: 24px;
 }
 .form{
     display: flex;
     justify-content: center;
-
+margin-bottom: 30px;
 }
 .input{
-width: 300px;
-height: 25px;
-margin-top: 30px;
-font-size: 1rem;
-border: none;
-background: white;
-margin-bottom: 40px;
+    padding: 14px 32px 14px 16px;
+    border-radius: 4px 0 0 4px;
+    border: 2px solid #5d0cff;
+    outline: none;
+    width: 320px;
+    background: transparent;
+    color: #fff;
 }
 .button{
-    position:relative;
-    top: 33px;
-    right: 30px;
-    background-image: url("../../image/плюс.png");
-    width: 19px;
-    height: 19px;
-    background-repeat: no-repeat;
-    background-size: 19px;
-    box-sizing: border-box;
+    padding: 16px;
     border: none;
- 
-
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    outline: none;
+    background: linear-gradient(
+      90deg,
+      rgba(93, 12, 255, 1) 0%,
+      rgba(155, 0, 250, 1) 100%
+    );
+    color: #fff;
+    text-transform: capitalize;
 }
 .button:hover {
-    opacity: 0.6;
+    opacity: 0.9;
     cursor: pointer;
   }
