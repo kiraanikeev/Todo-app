@@ -1,60 +1,60 @@
-.list{
-margin-top: 5px;
-    display: flex;
-    flex-direction: row;
-    position: relative;
+.list {
+  margin-top: 5px;
+  display: flex;
+  flex-direction: row;
+  position: relative;
 }
-.element{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 50px;
-    margin: 4px auto;
-    color: #fff;
-    background: linear-gradient(
-      90deg,
-      rgba(93, 12, 255, 1) 0%,
-      rgba(155, 0, 250, 1) 100%
-    );
-    padding: 15px;
-    border-radius: 5px;
-    width: 90%;
+.element {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  margin: 4px auto;
+  color: #fff;
+  background: linear-gradient(
+    90deg,
+    rgba(93, 12, 255, 1) 0%,
+    rgba(155, 0, 250, 1) 100%
+  );
+  padding: 15px;
+  border-radius: 5px;
+  width: 90%;
 }
-.active{
-    text-align: left;
-    margin-left: -150px;
+.active {
+  text-align: left;
+  margin-left: -150px;
 }
-.completed{
-    text-decoration: line-through;
-    margin-left: 10px;
-    opacity: 0.5;
-    margin-left: -150px;
+.completed {
+  text-decoration: line-through;
+  margin-left: 10px;
+  opacity: 0.5;
+  margin-left: -150px;
 }
 .icons {
-    margin-left: 100px;
-    display: flex;
-    align-items: left;
-    font-size: 24px;
-    cursor: pointer;
-  }
-  
-  .delete{
-    margin-right: 5px;
-    color: #fff;
-  }
-  
-  .edit{
-    color: #fff;
-  }
+  margin-left: 100px;
+  display: flex;
+  align-items: left;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.delete {
+  margin-right: 5px;
+  color: #fff;
+}
+
+.edit {
+  color: #fff;
+}
 .toggle:hover {
-    opacity: 0.6;
-    cursor: pointer;
-  }
+  opacity: 0.6;
+  cursor: pointer;
+}
 .delete:hover {
-    opacity: 0.6;
-    cursor: pointer;
-  }
-  .edit:hover {
-    opacity: 0.6;
-    cursor: pointer;
-  }
+  opacity: 0.6;
+  cursor: pointer;
+}
+.edit:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
