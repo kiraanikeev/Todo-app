@@ -18,3 +18,9 @@
 .text {
   margin-right: 10px;
 }
+
+@media screen and (max-width: 560px) {
+  .main {
+    width: 420px;
+  }
+}

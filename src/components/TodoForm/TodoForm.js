@@ -21,7 +21,7 @@ function TodoForm(props) {
           placeholder="What do you need to do?"
           required
           minLength={2}
-          maxLength={40}
+          maxLength={31}
           onChange={(e) => setTask(e.target.value)}
           value={task}
         />
